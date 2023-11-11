@@ -1,5 +1,4 @@
-﻿CREATE DATABASE BTL_v1
-GO
+﻿
 USE BTL_v1
 GO
 USE BTL_v1; -- Đảm bảo bạn đang sử dụng cơ sở dữ liệu cần xóa bảng
@@ -8,13 +7,18 @@ USE BTL_v1; -- Đảm bảo bạn đang sử dụng cơ sở dữ liệu cần x
 DROP TABLE IF EXISTS chiTietDonHang;
 DROP TABLE IF EXISTS tuyChon;
 DROP TABLE IF EXISTS hoaDon;
-DROP TABLE IF EXISTS nhanVien_soThich;
 DROP TABLE IF EXISTS sanPham;
 DROP TABLE IF EXISTS kichThuoc;
 DROP TABLE IF EXISTS mauSac;
 DROP TABLE IF EXISTS khachHang;
 DROP TABLE IF EXISTS nhanVien;
 DROP TABLE IF EXISTS cuaHang;
+drop table if exists dem1;
+drop table if exists banNhieuNhat;
+drop table if exists dem;
+drop table if exists thang10;
+drop table if exists giaTriHoaDon;
+drop table if exists doanhSoMuaHang;
 
 -- TẠO BẢNG CỬA HÀNG
 CREATE TABLE cuaHang
@@ -88,15 +92,7 @@ CREATE TABLE kichThuoc
   PRIMARY KEY (maKichThuoc)
 );
 GO
--- TẠO BẢNG SỞ THÍCH
-CREATE TABLE nhanVien_soThich
-(
-  soThich		 NVARCHAR(100) 	NOT NULL,
-  maNhanVien	NVARCHAR(10)	NOT NULL,
-  PRIMARY KEY (soThich, maNhanVien),
-  FOREIGN KEY (maNhanVien) REFERENCES nhanVien(maNhanVien)
-);
-GO
+
 -- TẠO BẢNG HÓA ĐƠN
 CREATE TABLE hoaDon
 (
@@ -110,7 +106,6 @@ CREATE TABLE hoaDon
   FOREIGN KEY (maKhachHang) REFERENCES khachHang(maKhachHang)
 );
 GO
--- TẠO BẢNG CHI TIẾT ĐƠN HÀNG
 
 -- TẠO BẢNG TÙY CHỌN
 CREATE TABLE tuyChon
@@ -125,6 +120,8 @@ CREATE TABLE tuyChon
   FOREIGN KEY (maKichThuoc) REFERENCES kichThuoc(maKichThuoc),
 );
 GO
+
+-- TẠO BẢNG CHI TIẾT ĐƠN HÀNG
 CREATE TABLE chiTietDonHang
 (
   soHoaDon			INT NOT NULL,
